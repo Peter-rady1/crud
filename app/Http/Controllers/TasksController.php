@@ -119,13 +119,13 @@ class TasksController extends Controller
             'read_at' => now()
         ]);
     }
+    public  function done(){
 
-    public  function todo(){
-
-        $todo = tasks::get()->where('status','to_do');
+        $todo = tasks::get()->where('status','done');
 
         return view('contant.filter',compact('todo'));
     }
+
 
     public  function inprog(){
 
@@ -134,9 +134,9 @@ class TasksController extends Controller
         return view('contant.filter',compact('todo'));
     }
 
-    public  function done(){
+    public  function todo(){
 
-        $todo = tasks::get()->where('status','done');
+        $todo = tasks::get()->where('status','to_do');
 
         return view('contant.filter',compact('todo'));
     }
