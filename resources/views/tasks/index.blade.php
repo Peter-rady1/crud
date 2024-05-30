@@ -71,6 +71,25 @@
         .dropdown:hover .dropbtn {
             /*background-color: #3e8e41;*/
         }
+        .fil{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .fil .btn {
+            background-color: #2d4373;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .fil a{
+            text-decoration: none;
+            color: white;
+        }
     </style>
     <body id="page-top">
 
@@ -133,6 +152,12 @@
                                 <h6 class="m-0 font-weight-bold text-primary">View Task</h6>
                             </div>
                             <div class="card-body">
+                                <div class="fil" >
+                                    <label for="Filter"> Filter By Status :  </label>
+                                    <button class="btn"><a class="aa"  href="{{route('todo.filt')}}">To Do</a></button>
+                                    <button class="btn"><a class="aa"  href="{{route('inprog.filt')}}">In Progress</a></button>
+                                    <button class="btn"><a class="aa"  href="{{route('done.filt')}}">Done</a></button>
+                                </div><br>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -173,6 +198,7 @@
 
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>

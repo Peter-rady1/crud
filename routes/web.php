@@ -44,7 +44,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 // });
 
 Route::resource('tasks', TasksController::class);
-Route::get('single/{id}', [TasksController::class, 'single'])->name('tasks.single');
 
+Route::get('single/{id}', [TasksController::class, 'single'])->name('tasks.single');
 Route::get('mark/{id}', [TasksController::class, 'mark'])->name('mark');
 Route::get('markall', [TasksController::class, 'markall'])->name('markall');
+
+Route::get('todo', [TasksController::class, 'todo'])->name('todo.filt');
+
+Route::get('inprogress', [TasksController::class, 'inprog'])->name('inprog.filt');
+
+Route::get('done', [TasksController::class, 'done'])->name('done.filt');

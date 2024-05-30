@@ -20,6 +20,8 @@ class TasksController extends Controller
     {
         $viewtasks = tasks::get()->where('user_id','=',Auth::user()->id);
 
+
+
         return view('tasks.index',compact('viewtasks'));
     }
 
@@ -46,8 +48,8 @@ class TasksController extends Controller
 
         $tasks->save();
 
-//        $users= User::where('id','!=',auth()->user()->id)->get();
-//        Notification::send($users,new taskanotify($request->title,$request->body));
+        $users= User::where('id','!=',auth()->user()->id)->get();
+        Notification::send($users,new taskanotify($request->title,$request->body));
 
         return redirect()->route('tasks.index');
     }
@@ -57,9 +59,7 @@ class TasksController extends Controller
      */
     public function show()
     {
-        $tasks = tasks::get();
-
-        return view('contact.home',compact('tasks'))  ;
+      //
     }
 
 
@@ -120,6 +120,24 @@ class TasksController extends Controller
         ]);
     }
 
+    public  function todo(){
 
+        $todo = tasks::get()->where('status','to_do');
 
+        return view('contant.filter',compact('todo'));
+    }
+
+    public  function inprog(){
+
+        $todo = tasks::get()->where('status','in_progress');
+
+        return view('contant.filter',compact('todo'));
+    }
+
+    public  function done(){
+
+        $todo = tasks::get()->where('status','done');
+
+        return view('contant.filter',compact('todo'));
+    }
 }
