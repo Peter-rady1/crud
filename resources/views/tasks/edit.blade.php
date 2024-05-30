@@ -150,12 +150,19 @@
                               <div class="form-group">
                                 <label for="body">Body</label>
                                 <input type="textarea" class="form-control" id="body" name="body" rows="3" value="{{$singletask->body}}" >
-                                {{-- <textarea class="form-control" id="body" name="body" rows="3" value="{{$singletask->body}}" ></textarea> --}}
                               </div>
-{{--                              <input  name="status" type="hidden"  >--}}
                                 <div class="form-group">
-                                    <label for="title">status</label>
-                                    <input type="text" class="form-control" id="status" name="status"  value="{{$singletask->status}}"  >
+                                    <label for="title">Old status:</label>
+                                    <input type="text" class="form-control" id="status" name="status"  value="{{$singletask->status}}" readonly >
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">New Status:</label><br>
+                                    <input type="radio" id="status" name="status" value="to_do" required>
+                                    <label for="to_do">To Do</label><br>
+                                    <input type="radio" id="status" name="status" value="in_progress" required>
+                                    <label for="in_progress">In Progress</label><br>
+                                    <input type="radio" id="status" name="status" value="done" required >
+                                    <label for="done">Done</label>
                                 </div>
                               <br>
                               <button type="submit" class="btn btn-primary">Update Task</button>

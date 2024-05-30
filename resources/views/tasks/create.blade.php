@@ -148,8 +148,22 @@
                                 <textarea class="form-control" id="body" name="body" rows="3" required></textarea>
                               </div>
                                 <div class="form-group">
-                                    <label for="title">status</label>
-                                    <input type="text" class="form-control" id="status" name="status" required>
+                                    <label for="users"> Users List: </label><br>
+                                    @foreach($users as $user)
+                                        <input type="radio" id="user_id" name="user_id" value="{{$user->id}}" required>
+                                        <label for="user_id" > {{$user->id}} {{$user->name}} </label><br>
+                                    @endforeach
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="status">status</label><br>
+{{--                                    <input type="text" class="form-control" id="status" name="status" required>--}}
+                                    <input type="radio" id="status" name="status" value="to_do" required>
+                                    <label for="to_do">To Do</label><br>
+                                    <input type="radio" id="status" name="status" value="in_progress" required>
+                                    <label for="in_progress">In Progress</label><br>
+                                    <input type="radio" id="status" name="status" value="done" required >
+                                    <label for="done">Done</label>
                                 </div>
                               <br>
                               <button type="submit" class="btn btn-primary">Create Task</button>

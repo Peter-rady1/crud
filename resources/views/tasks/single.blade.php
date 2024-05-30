@@ -145,17 +145,15 @@
                                         @method('PATCH')
                                         <div class="form-group">
                                             <label for="title">Title</label>
-                                            <input type="text" class="form-control" id="title" name="title"  value="{{$single->title}}"  >
+                                            <input type="text" class="form-control" id="title" name="title"  value="{{$single->title}}"  readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="body">Body</label>
-                                            <input type="textarea" class="form-control" id="body" name="body" rows="3" value="{{$single->body}}" >
-                                            {{-- <textarea class="form-control" id="body" name="body" rows="3" value="{{$singletask->body}}" ></textarea> --}}
+                                            <input type="textarea" class="form-control" id="body" name="body" rows="3" value="{{$single->body}}" readonly>
                                         </div>
-                                        {{--                              <input  name="status" type="hidden"  >--}}
                                         <div class="form-group">
                                             <label for="title">status</label>
-                                            <input type="text" class="form-control" id="status" name="status"  value="{{$single->status}}"  >
+                                            <input type="text" class="form-control" id="status" name="status"  value="{{$single->status}}"  readonly>
                                         </div>
                                         <br>
                                         <button type="submit" class="btn btn-primary">Update Task</button>

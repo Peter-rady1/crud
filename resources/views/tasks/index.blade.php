@@ -140,6 +140,7 @@
                                                 <th>Title</th>
                                                 <th>Body</th>
                                                 <th>Status</th>
+                                                <th>For User No.</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -148,6 +149,7 @@
                                                 <th>title</th>
                                                 <th>Body</th>
                                                 <th>Status</th>
+                                                <th>For User No.</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </tfoot>
@@ -157,7 +159,7 @@
                                                 <td>{{$item->title}}</td>
                                                 <td>{{$item->body}}</td>
                                                 <td>{{$item->status}}</td>
-
+                                                <td>{{$item->user_id}}</td>
                                                 <td>
                                                   <button class="btn"><a class="aa"  href="{{route('tasks.edit',$item->id)}}">Update</a></button>
                                                         <form action="{{route('tasks.destroy',$item->id)}}" method="POST" >
@@ -180,16 +182,6 @@
 
                 </div>
                 <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    {{-- <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div> --}}
-                </footer>
-                <!-- End of Footer -->
 
             </div>
             <!-- End of Content Wrapper -->

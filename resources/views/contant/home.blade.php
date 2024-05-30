@@ -157,9 +157,6 @@
                 </li>
 
 
-
-
-
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -190,70 +187,6 @@
                     </div>
                 </header>
 
-
-
-
-                <div id="wrapper" class="d-flex flex-column">
-                    <!-- Main Content -->
-                    <div id="content">
-                        <!-- Begin Page Content -->
-                        <div class="container-fluid pt-3">
-                            <!-- DataTales Example -->
-                            <div class="card shadow mb-4  " >
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Tasks List</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Body</th>
-                                                    <th>Status</th>
-                                                    <th> Action </th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>title</th>
-                                                    <th>Body</th>
-                                                    <th>Status</th>
-                                                    <th> Action </th>
-
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                            @if (Auth::user())
-                                            @foreach ($tasks as $item)
-                                                <tr>
-                                                    <td>{{$item->title}}</td>
-                                                    <td>{{$item->body}}</td>
-                                                    <td>{{$item->status}}</td>
-                                                    <td><button class="btn"><a class="aa" href="{{route('tasks.single',$item->id)}}">Show More </a></button></td>
-                                                </tr>
-                                                @endforeach
-                                            @else
-                                            "Nothing to show please login"
-
-                                            @endif
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- /.container-fluid -->
-
-                    </div>
-                    <!-- End of Main Content -->
-
-
-
-                </div>
             </div>
             <!-- End of Content Wrapper -->
 

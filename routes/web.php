@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ContantController;
 
-Route::get('/', function () {
-    return view('contant.home');
-});
+
 
 
 Route::resource('tasks', TasksController::class);
@@ -34,6 +32,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
             return view('contant.home');
         }
     })->name('dashboard');
+    Route::get('/', function () {
+        return view('contant.home');
+    });
 
 });
 

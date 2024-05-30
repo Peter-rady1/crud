@@ -6,6 +6,7 @@ use App\Models\tasks;
 use App\Models\User;
 use App\Notifications\taskanotify;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use function Laravel\Prompts\table;
@@ -17,10 +18,9 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $viewtasks = tasks::get();
+        $viewtasks = tasks::get()->where('user_id','=',Auth::user()->id);
 
-
-        return view('contant.viewtask',compact('viewtasks'));
+        return view('tasks.index',compact('viewtasks'));
     }
 
     /**
@@ -28,7 +28,8 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('contant.addtask');
+        $users =User::get();
+        return view('tasks.create',compact('users'));
     }
 
     /**
@@ -41,12 +42,12 @@ class TasksController extends Controller
         $tasks->title = $request->title;
         $tasks->body = $request->body;
         $tasks->status = $request->status;
-
+        $tasks->user_id = $request->user_id;
 
         $tasks->save();
 
-        $users= User::where('id','!=',auth()->user()->id)->get();
-        Notification::send($users,new taskanotify($request->title,$request->body));
+//        $users= User::where('id','!=',auth()->user()->id)->get();
+//        Notification::send($users,new taskanotify($request->title,$request->body));
 
         return redirect()->route('tasks.index');
     }
@@ -58,7 +59,6 @@ class TasksController extends Controller
     {
         $tasks = tasks::get();
 
-
         return view('contact.home',compact('tasks'))  ;
     }
 
@@ -69,7 +69,7 @@ class TasksController extends Controller
     public function edit( $id)
     {
         $singletask  = tasks::find($id);
-        return view('contant.update',compact('singletask'));
+        return view('tasks.edit',compact('singletask'));
 
     }
     /**
@@ -78,7 +78,7 @@ class TasksController extends Controller
     public function single( $id)
     {
         $single  = tasks::find($id);
-        return view('contant.single',compact('single'));
+        return view('tasks.single',compact('single'));
     }
 
     /**
@@ -93,7 +93,7 @@ class TasksController extends Controller
 
         $tdata->save();
 
-        return redirect()->route('contant.home');
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -119,4 +119,7 @@ class TasksController extends Controller
             'read_at' => now()
         ]);
     }
+
+
+
 }
